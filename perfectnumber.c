@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdbool.h>
+#include <quadmath.h>
 
 bool is_prime(long long int x);
 
@@ -8,10 +8,10 @@ int main() {
 	long long int p, mersenne, perfect;
 
 	for(p = 2; 1; p++) {
-		mersenne = powl(2, p) - 1;
+		mersenne = powq(2, p) - 1;
 
 		if(is_prime(mersenne)) {
-			perfect = powl(2, p-1) * mersenne;
+			perfect = powq(2, p-1) * mersenne;
 			printf("%s %i\n", "Mersenne Prime: ", mersenne);
 			printf("%s %i\n", "Perfect Number: ", perfect);
 		}
@@ -20,7 +20,7 @@ int main() {
 }
 
 bool is_prime(long long int x) {
-	long long int root = (long long) sqrtl(x);
+	long long int root = sqrtq(x);
 	long long int i;
 
 	if(x == 2) {
